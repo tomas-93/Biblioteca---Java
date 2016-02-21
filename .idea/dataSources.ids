@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - itesco@localhost" uuid="21ec032f-4dc4-4371-a178-a9d82aced504">
+    <database-info product="MySQL" version="5.6.25-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="itesco"/>
+    <table name="alumno" schema="" catalog="itesco" type="TABLE">
+      <column name="id_alumno" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="carrera" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nivel" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_alumno"/>
+      <exported-key name="id_alumno" table="prestamo" schema="" catalog="itesco" columns="id_alumno"/>
+    </table>
+    <table name="empleado" schema="" catalog="itesco" type="TABLE">
+      <column name="idempleado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cargo" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pass" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idempleado"/>
+    </table>
+    <table name="libro" schema="" catalog="itesco" type="TABLE">
+      <column name="id_libro" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="titulo" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="editorial" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="autor" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fecha" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_libro"/>
+      <exported-key name="id_libro" table="prestamo" schema="" catalog="itesco" columns="id_libro"/>
+    </table>
+    <table name="prestamo" schema="" catalog="itesco" type="TABLE">
+      <column name="id_prestamo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_alumno" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="id_libro" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="fecha" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_prestamo"/>
+      <foreign-key name="id_alumno" columns="id_alumno" ref-table="alumno" ref-schema="" ref-catalog="itesco" ref-columns="id_alumno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="id_libro" columns="id_libro" ref-table="libro" ref-schema="" ref-catalog="itesco" ref-columns="id_libro" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="id_alumno_idx" unique="false" columns="id_alumno"/>
+      <index name="id_libro_idx" unique="false" columns="id_libro"/>
+    </table>
+  </data-source>
+</component>
